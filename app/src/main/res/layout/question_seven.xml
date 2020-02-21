@@ -1,12 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <!--  Start : Your code should be within this block -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:text="Question 7"
+        android:textSize="33sp" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginRight="49dp"
+        android:text="In which condition will you buy a new phone?"
+        android:textSize="22sp" />
 
-    <!-- END    : Your code should be within this block -->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="320dp"
+        android:layout_height="83dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginBottom="37dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="gonext"
+        android:text="Next" />
 
-</LinearLayout>
+    <RadioGroup
+        android:layout_width="332dp"
+        android:layout_height="319dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:scrollbarSize="6dp"
+            android:text=" When the old phone has been used for a year or two.(but it still works)"
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:scrollbarSize="6dp"
+            android:text=" When the old phone has been used for a year or two.(but it still works)"
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:scrollbarSize="6dp"
+            android:text=" When the old phone breaks down."
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:scrollbarSize="6dp"
+            android:text=" When a new phone is released."
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:scrollbarSize="6dp"
+            android:text=" Others."
+            android:textSize="17sp" />
+
+    </RadioGroup>
+
+</RelativeLayout>
