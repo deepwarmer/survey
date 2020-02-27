@@ -47,18 +47,18 @@
 
     <RadioGroup
         android:id="@+id/choose"
-        android:layout_width="332dp"
-        android:layout_height="319dp"
+        android:layout_width="351dp"
+        android:layout_height="321dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp">
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp">
 
         <RadioButton
             android:id="@+id/radioButton"

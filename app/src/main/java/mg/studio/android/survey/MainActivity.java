@@ -35,6 +35,43 @@ public class MainActivity extends AppCompatActivity {
             R.layout.finish_survey
     };
 
+    private boolean dataInputed() {
+
+        switch (questionTypes[iPage]) {
+            case 1:
+                ViewGroup choices_1 = findViewById(R.id.choose);
+                for (int i = 0; i < choices_1.getChildCount(); ++i) {
+                    RadioButton but = (RadioButton) choices_1.getChildAt(i);
+                    if (but.isChecked()) {
+                        return true;
+                    }
+                }
+                break;
+            case -2:
+                CheckBox enterSurvey=(CheckBox)findViewById(R.id.enterSurvey);
+                if(enterSurvey.isChecked())
+                    return true;
+                break;
+            case 2:
+                ViewGroup choices_2 = findViewById(R.id.choose);
+                for (int i = 0; i < choices_2.getChildCount(); ++i) {
+                    CheckBox but = (CheckBox) choices_2.getChildAt(i);
+                    if (but.isChecked()) {
+                        return true;
+                    }
+                }
+                break;
+            case 3:
+                EditText choices_edit = findViewById(R.id.choose_txt);
+                if (choices_edit.getText().toString().length() > 0)
+                    return true;
+                break;
+            default:
+                return true;
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.welcome);
     }
 
-    Integer questionTypes[] = {-1, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1, 1, -1};
+    Integer questionTypes[] = {-2, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1, 1, -1};
 
     public void gonext(View view) {
-
+        if(!dataInputed())return;
         if (questionTypes[iPage] > 0) {
             String ret = "";
             ret += questionTypes[iPage].toString();
@@ -87,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
-        ArrayList<Integer> ar = new ArrayList<Integer>();
         iPage = iPage + 1;
         if (iPage == layers.length) {
             Intent ittMainToSum = new Intent(this, sumActivity.class);
