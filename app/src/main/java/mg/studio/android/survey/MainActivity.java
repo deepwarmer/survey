@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         iPage = iPage + 1;
-        if (iPage == layers.length) {
+        if (iPage == layers.length ) {
             Intent ittMainToSum = new Intent(this, sumActivity.class);
             ittMainToSum.putExtra("result", tmpSumData);
             startActivity(ittMainToSum);
