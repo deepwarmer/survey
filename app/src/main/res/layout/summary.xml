@@ -3,6 +3,7 @@
     android:id="@+id/LayoutSummary"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <Button
         android:id="@+id/btnSummaryNext"
         android:layout_width="320dp"

@@ -7,15 +7,19 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="QuestionTitle">
-        <item name="android:textSize">25sp </item>
+        <item name="android:textSize">25sp</item>
     </style>
+
     <style name="QuestionDescription">
-        <item name="android:textSize">20sp </item>
+        <item name="android:textSize">20sp</item>
     </style>
+
     <style name="OptionDescription">
         <item name="android:textSize">13sp</item>
     </style>
+
     <style name="NextButton">
         <item name="background">@color/colorPrimary</item>
     </style>
