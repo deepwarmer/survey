@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity() {
                 jsonResult.getJSONObject("survey").put("result",jsonRecords);
 
                 val dir = getExternalFilesDir("SurveyResult")!!.absoluteFile
-                val file = File(dir, "survey.json")
+                val file = File(dir, "results.json")
                 if(!file.exists())
                 {
                     file.createNewFile();
