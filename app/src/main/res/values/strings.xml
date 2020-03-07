@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">survey_with_kt</string>
+    <string name="app_name">survey</string>
     <string name="WelcomeTitle1">"WELCOME TO"</string>
     <string name="WelcomeTitle2">" TAKE PART IN OUR SURVEY!"</string>
     <string name="WelcomeDescription">"Before we start,here are things youshould know:"</string>
