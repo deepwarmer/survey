@@ -15,13 +15,14 @@ import org.json.JSONObject
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.io.InputStream
 
 //MainActivity , okay
 class MainActivity : AppCompatActivity() {
 
     lateinit var jsonSurvey: org.json.JSONObject;
     var strJsonSurvey =
-        """
+    """"
     {"survey": {"id": "12344134", "len": "2","questions": [{"type":"text","question":"What do you think of the professors?"},{"type": "multiple","question": "How well do the professors teach at this university?","options": [{ "1": "Extremely well" }, { "2": "Very well" }]},{"type": "single","question": "How effective is the teaching outside yur major at the univesrity?","options": [{ "1": "Extremetly effective" },{ "2": "Very effective" },{ "3": "Somewhat effective" },{ "4": "Not so effective" },{ "5": "Not at all effective" }]}]}}
     """
     lateinit var jsonResult: org.json.JSONObject;
@@ -65,8 +66,17 @@ class MainActivity : AppCompatActivity() {
         return false;
     }
 
-    //Load arQuestion from strJsonSurvey
+    //Load arQuestion from survey.json or strJsonSurvey
     fun initQuestion() {
+        val dir = getExternalFilesDir("SurveyResult")!!.absoluteFile
+        val file = File(dir, "survey.json")
+        //Load from survey.json if it exists
+        if(file.exists())
+        {
+            var fin=FileInputStream(file);
+            strJsonSurvey=fin.readBytes().toString(Charsets.UTF_8);
+            fin.close();
+        }
         jsonSurvey = org.json.JSONObject(strJsonSurvey)
         //Load from json
         nPageCnt = (jsonSurvey.get("survey") as JSONObject).getString("len").toInt()
