@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--  Start : Your code should be within this block -->
+
+    <TextView
+        android:id="@+id/txt_thx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_30dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginRight="@dimen/margin_30dp"
+        android:layout_marginBottom="@dimen/margin_zero"
+        android:text="@string/str_thxu"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_large" />
+
+    <TextView
+        android:id="@+id/txt_thx_for"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_30dp"
+        android:layout_marginTop="@dimen/margin_zero"
+        android:layout_marginRight="@dimen/margin_30dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:text="@string/str_thx_for"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_middle" />
+
+    <ImageView
+        android:id="@+id/img_thx"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_30dp"
+        android:layout_marginTop="@dimen/margin_zero"
+        android:layout_marginRight="@dimen/margin_30dp"
+        android:layout_marginBottom="@dimen/margin_zero"
+        android:layout_weight="1"
+        android:contentDescription="@string/img_cd"
+        android:src="@drawable/bili_girl" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:background="@color/colorPrimary"
+        android:onClick="onClickReport"
+        android:text="@string/btn_finish"
+        android:textSize="@dimen/font_size_middle" />
+
+    <!-- END    : Your code should be within this block -->
+</LinearLayout>

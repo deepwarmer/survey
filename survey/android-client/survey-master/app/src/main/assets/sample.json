@@ -1,0 +1,136 @@
+{
+    "survey": {
+        "id": "12344134",
+        "len": "12",
+        "questions": [
+            {
+                "type": "single",
+                "question": "Which brand phone will you choose if you are going to buy a new one?",
+                "options":[
+                    {"1":"Iphone"},
+                    {"2":"Samsung"},
+                    {"3":"MI"},
+                    {"4":"Lenovo"},
+                    {"5":"Sony"},
+                    {"6":"Nokia"},
+                    {"7":"Others"}
+                ]
+            },
+            {
+                "type":"single",
+                "question":"How much does your phone cost?",
+                "options":[
+                    {"1":"Under 1000"},
+                    {"2":"1000~1999"},
+                    {"3":"2000~2999"},
+                    {"4":"3000~3999"},
+                    {"5":"More than 4000"}
+
+                ]
+            },
+            {
+                "type":"single",
+                "question":"What kind of phone are you using?",
+                "options":[
+                    {"1":"2G"},
+                    {"2":"3G"},
+                    {"3":"4G"},
+                    {"4":"Others"}
+                ]
+            },
+            {
+                "type":"multiple",
+                "question":"What functions does your phone have now?",
+                "options":[
+                    {"1":"Music functions"},
+                    {"2":"Photo functions"},
+                    {"3":"Game functions"},
+                    {"4":"Business functions(Word,Excel,etc.)"},
+                    {"5":"GPS functions"},
+                    {"6":"Data functions(Bluetooth,WLAN,etc.)"},
+                    {"7":"Others"}
+                ]
+            },
+            {
+                "type":"multiple",
+                "question":"What functions are the most often used?",
+                "options":[
+                    {"1":"Music functions"},
+                    {"2":"Photo functions"},
+                    {"3":"Game functions"},
+                    {"4":"Business functions(Word,Excel,etc.)"},
+                    {"5":"GPS functions"},
+                    {"6":"Data functions(Bluetooth,WLAN,etc.)"},
+                    {"7":"Others"}
+                ]
+            },
+            {
+                "type":"fill",
+                "question":"What function do you want your phone to have in the future?",
+                "options":[]
+            },
+            {
+                "type":"single",
+                "question":"In which condition will buy a new phone?",
+                "options":[
+                    {"1":"When the old phone has been used for a year or two.(but it still works)"},
+                    {"2":"When the old phone has been used for more than three years.(but it still works)"},
+                    {"3":"When the old phone breaks down."},
+                    {"4":"When a new phone was released?"}
+                ]
+            },
+            {
+                "type":"single",
+                "question":"Which brand phone will you choose if you are going to buy a new one?",
+                "options":[
+                    {"1":"Iphone"},
+                    {"2":"Samsung"},
+                    {"3":"MI"},
+                    {"4":"Lenovo"},
+                    {"5":"Sony"},
+                    {"6":"Nokia"},
+                    {"7":"Others"}
+                ]
+            },
+            {
+                "type":"single",
+                "question":"What characteristic do you think is the most important to evaluate a phone?",
+                "options":[
+                    {"1":"Appearance"},
+                    {"2":"Price"},
+                    {"3":"Performance"},
+                    {"4":"Others"}
+                ]
+            },
+            {
+                "type":"single",
+                "question":"How old are you?",
+                "options":[
+                    {"1":"Under 18"},
+                    {"2":"19~25"},
+                    {"3":"25~35"},
+                    {"4":"Beyond 35"}
+                ]
+            },
+            {
+                "type":"single",
+                "question":"What's your gender?",
+                "options":[
+                    {"1":"Male"},
+                    {"2":"Female"}
+                ]
+            },
+            {
+                "type":"single",
+                "question":"How much money do you earn per month?",
+                "options":[
+                    {"1":"I haven't  got a job"},
+                    {"2":"Under 3000"},
+                    {"3":"3000~5000"},
+                    {"4":"5000~10000"},
+                    {"5":"More than 10000"}
+                ]
+            }
+        ]
+    }
+}
