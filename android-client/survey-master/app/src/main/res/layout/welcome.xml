@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--  Start : Your code should be within this block -->
+
+    <TextView
+        android:id="@+id/txt_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:padding="0dp"
+        android:text="@string/str_welcome"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_large" />
+
+    <TextView
+        android:id="@+id/txtAttend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_40dp"
+        android:layout_marginTop="@dimen/margin_zero"
+        android:layout_marginRight="@dimen/margin_40dp"
+        android:layout_marginBottom="@dimen/margin_zero"
+        android:text="@string/str_attend"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_middle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginBottom="@dimen/margin_zero"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_statement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_30dp"
+                android:layout_marginLeft="@dimen/margin_30dp"
+                android:layout_marginEnd="@dimen/margin_30dp"
+                android:layout_marginRight="@dimen/margin_30dp"
+                android:text="@string/str_statement"
+                android:textSize="@dimen/font_size_middle" />
+
+            <TextView
+                android:id="@+id/txt_request1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_30dp"
+                android:layout_marginLeft="@dimen/margin_30dp"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:layout_marginEnd="@dimen/margin_30dp"
+                android:layout_marginRight="@dimen/margin_30dp"
+                android:layout_marginBottom="@dimen/margin_zero"
+                android:text="@string/str_request1"
+                android:textSize="@dimen/font_size_average" />
+
+            <TextView
+                android:id="@+id/txtRequest2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_30dp"
+                android:layout_marginLeft="@dimen/margin_30dp"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:layout_marginEnd="@dimen/margin_30dp"
+                android:layout_marginRight="@dimen/margin_30dp"
+                android:layout_marginBottom="@dimen/margin_zero"
+                android:text="@string/str_request2"
+                android:textSize="@dimen/font_size_average" />
+
+            <TextView
+                android:id="@+id/txtRequest3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_30dp"
+                android:layout_marginLeft="@dimen/margin_30dp"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:layout_marginEnd="@dimen/margin_30dp"
+                android:layout_marginRight="@dimen/margin_30dp"
+                android:layout_marginBottom="@dimen/margin_30dp"
+                android:text="@string/str_request3"
+                android:textSize="@dimen/font_size_average" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/img_scan"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:contentDescription="@string/scan"
+        android:src="@drawable/scan" />
+
+    <CheckBox
+        android:id="@+id/cb_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/cb_accept"
+        android:textSize="@dimen/font_size_average" />
+
+    <Button
+        android:id="@+id/btn_go"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:background="@color/colorPrimary"
+        android:onClick="onClickGo"
+        android:text="@string/btn_go"
+        android:textSize="@dimen/font_size_middle" />
+
+    <!-- END    : Your code should be within this block -->
+</LinearLayout>

@@ -1,0 +1,590 @@
+﻿{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8" />
+  <script src="{% static 'jquery-1.11.3.js' %}"></script>
+  <script src="{% static 'KeeeX_qrcode.js' %}"></script>
+  <style type="text/css">
+    .menu {
+      float: left;
+      width: 100px;
+      height: 200px;
+      margin-top: 200px;
+      margin-left: 100px;
+      /*background-color: #45B7FF;*/
+      text-align: center;
+      border: 1px solid #45B7FF;
+    }
+
+    .menu .menu_bar {
+      background-color: #45B7FF;
+      font-size: larger;
+      color: white;
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .menu table {
+      margin-top: 10px;
+      margin-left: 30px;
+      text-align: center;
+    }
+
+    .menu table td {
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .menu table td a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .menu table td a:hover {
+      background-color: #CCCCCC;
+      color: white;
+    }
+
+
+    .container {
+      float: left;
+      width: 900px;
+    }
+
+    .head {
+      text-align: center;
+    }
+
+    .head button {
+      background-color: #45B7FF;
+      border-radius: 5px;
+      width: 100px;
+      height: 25px;
+      border-color: #45B7FF;
+      color: white;
+      margin-left: 100px;
+    }
+
+    .head div {
+      font-size: smaller;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      color: #CCCCCC;
+    }
+
+    .head input[type=text] {
+      width: 169px;
+      height: 21px;
+      background-color: white;
+    }
+
+    .head select {
+      width: 173px;
+      height: 25px;
+    }
+
+    .head ul li {
+      margin: 5px 0px;
+    }
+
+    #content {
+
+      width: 900px;
+      text-align: left;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    #content div {
+      margin: 10px 5%;
+      width: 90%;
+      border: 1px solid #CCCCCC;
+      padding: 5px 0px;
+    }
+
+    #content input[type=text] {
+      width: 700px;
+      border: none;
+      height: 30px;
+      padding-left: 5px;
+    }
+
+    #content ul {
+      margin-top: 10px;
+      margin-left: 50px;
+    }
+
+    #content ul li input[type=text] {
+      width: 400px;
+    }
+
+    #content ul li {
+      margin-bottom: 5px;
+    }
+
+    #content div textarea {
+      width: 700px;
+      height: 50px;
+      border: none;
+      margin-left: 5px;
+    }
+
+    #content label {
+      height: 20px;
+      line-height: 20px;
+      display: inline-block;
+    }
+
+    .close {
+      width: 30px !important;
+      display: none;
+      position: absolute;
+    }
+
+    .add {
+      width: 30px !important;
+      display: none;
+      position: absolute;
+    }
+
+    .delete {
+      width: 30px !important;
+      display: none;
+      position: absolute;
+    }
+
+    #qrcode {
+      width: 400px !important;
+      height: 400px !important;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      margin: auto;
+      background-color: #45B7FF;
+      z-index: 2
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cover"
+    style="background: #FFFFFF; position: absolute; left: 0px; top: 0px; width: 100%; filter: alpha(opacity=30); opacity: 0.5; display: none; z-index: 2 ">
+  </div>
+  <div class="main">
+    <div class="menu">
+      <div class="menu_bar">Type</div>
+      <div>
+        <table>
+          <tr>
+            <td><a href="javascript:;" id="radio2">Radio   </a></td>
+          </tr>
+          <tr>
+            <td><a href="javascript:;" id="radio3">Checkbox</a></td>
+          </tr>
+          <tr>
+            <td><a href="javascript:;" id="text">Text    </a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="container">
+      <div class="head">
+        <ul>
+         
+          <li>
+            <button id="btnSubmit">submit</button>
+          </li>
+        </ul>
+        
+      </div>
+      <div id="content"></div>
+    </div>
+  </div>
+
+  <!-- <button class="close">X</button> -->
+</body>
+
+</html>
+<script type="text/javascript">
+  count = 0;
+
+  function formRadio2() {
+    count++;
+    var radio =
+      "<div id='Q" +
+      count +
+      "' name='Q" +
+      count +
+      "' type='radio' number='" +
+      count +
+      "'><label>" +
+      "Q" +
+      count +
+      ":</label>&nbsp;&nbsp;<input type='text' class='title' value='Description'/>" +
+      "<ul class='answer'><li><input type='radio'><input type='text' value='1'></li></ul><button class='close'>x</button><button class='add'>+</button><button class='delete'>-</button></div>";
+    return radio;
+  }
+  function formRadio3() {
+    count++;
+    var radio =
+      "<div id='Q" +
+      count +
+      "' name='Q" +
+      count +
+      "' type='checkbox' number='" +
+      count +
+      "'><label>" +
+      "Q" +
+      count +
+      ":</label>&nbsp;&nbsp;<input type='text' class='title' value='Description'/>" +
+      "<ul class='answer'><li><input type='checkbox'><input type='text' value='1'></li></ul><button class='close'>x</button><button class='add'>+</button><button class='delete'>-</button></div>";
+    return radio;
+  }
+
+  function formText() {
+    count++;
+    var text =
+      "<div id='Q" +
+      count +
+      "' name='Q" +
+      count +
+      "' type='text' number='" +
+      count +
+      "'><label>" +
+      "Q" +
+      count +
+      ":</label>&nbsp;&nbsp;<input type='text' class='title' value='Description'/><ul><li><input type='text'></li></ul><button class='close'>x</button></div>";
+    return text;
+  }
+
+  function formLabel() {
+    var label =
+      "<div type='label'><textarea class='title'>Description</textarea><button class='close'>x</button></div>";
+    return label;
+  }
+  $(".menu").on("click", "a", function () {
+    var id = $(this).attr("id");
+    switch (id) {
+      case "radio2":
+        var content = formRadio2();
+        $("#content").append(content);
+        break;
+      case "radio3":
+        var content = formRadio3();
+        $("#content").append(content);
+        break;
+      case "text":
+        var content = formText();
+        $("#content").append(content);
+        break;
+      case "label":
+        var content = formLabel();
+        $("#content").append(content);
+        break;
+    }
+  });
+
+  $("#btnSubmit").on("click", function () {
+    var content = [];
+    var count = 0;
+    $("#content")
+      .find("div[type]")
+      .each(function () {
+        var type = $(this).attr("type");
+        if (type == "label") {
+          var tempdata = {};
+          tempdata["type"] = type;
+          tempdata["title"] = $(this)
+            .find("textarea")
+            .val();
+          content[count++] = tempdata;
+        } else if (type == "radio") {
+          var tempdata = {};
+          //  tempdata['id']      =   $(this).attr("id");;
+          //tempdata['name']    =   $(this).attr("name");
+          tempdata["type"] = type;
+          tempdata["question"] = $(this)
+            .find("input.title")
+            .val();
+          var tempCount = 1;
+          var answer = [];
+
+          $(this)
+            .find(".answer input[type=text]")
+            .each(function () {
+              var tempRadio = {};
+              var count1 = tempCount++;
+              tempRadio[count1] = $(this).val();
+              answer[count1 - 1] = tempRadio;
+            });
+
+          tempdata["options"] = answer;
+
+          content[count++] = tempdata;
+        } else if (type == "checkbox") {
+          var tempdata = {};
+          // tempdata['id']      =   $(this).attr("id");;
+          //tempdata['name']    =   $(this).attr("name");
+          tempdata["type"] = type;
+          tempdata["question"] = $(this)
+            .find("input.title")
+            .val();
+          var tempCount = 1;
+          var answer = [];
+
+          $(this)
+            .find(".answer input[type=text]")
+            .each(function () {
+              var tempRadio = {};
+              var count1 = tempCount++;
+              tempRadio[count1] = $(this).val();
+              answer[count1 - 1] = tempRadio;
+            });
+
+          tempdata["options"] = answer;
+
+          content[count++] = tempdata;
+        } else if (type == "text") {
+          var tempdata = {};
+          // tempdata['id']      =   $(this).attr("id");;
+          // tempdata['name']    =   $(this).attr("name");
+          tempdata["type"] = type;
+          tempdata["question"] = $(this)
+            .find("input.title")
+            .val();
+          content[count++] = tempdata;
+        }
+      });
+    var name = $("#questionnaireName").val();
+if(count==0){
+window.alert("Please input the question!");
+
+return;
+}
+
+    var tempdata = {};
+    tempdata["id"] = "" + "" + "";
+    tempdata["len"] = "" + count + "";
+
+
+    tempdata["questions"] = content;
+    var tempsur = {};
+    tempsur["survey"] = tempdata;
+
+    var template = JSON.stringify(tempsur);
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////这里打印了JSON字符串///////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+   //console.log(template);
+var formdata=new FormData();
+//可以通过append()方法来追加数据
+formdata.append("content",template);
+//通过get方法对值进行读取
+
+var data11={
+
+		'content':template
+	}
+console.log(data11);
+
+
+console.log(formdata);
+
+console.log(formdata.getAll("content"));
+//////////////////////////////////////////////提交
+
+ //console.info(a); 
+ $.ajax({             
+   url : "http://deepworm.xyz:8000/survey/savesurvey",        
+        type : "POST",             
+data:data11,          
+    success : function(data) {                   
+ console.info("succes"+data);      
+showqrcode(data)     ;  
+   },             
+   error : function(data) {               
+ console.warn("warn"+data);          
+      }         
+   });         
+  // return false;
+
+
+    //showqrcode(template)
+    ///
+
+    /*json格式示例：
+{
+"survey": {
+  "id": "123555",
+  "len": "3",
+  "questions": [{
+    "type": "radio",
+    "question": "请输入单选描述",
+    "options": [{
+      "1": "选项1"
+    }, {
+      "2": "选项2"
+    }]
+  }, {
+    "type": "checkbox",
+    "question": "请输入多选描述",
+    "options": [{
+      "1": "选项1"
+    }, {
+      "2": "选项2"
+    }, {
+      "3": "选项3"
+    }]
+  }, {
+    "type": "text",
+    "question": "请输入文本框描述"
+  }]
+}
+}
+*/
+  });
+
+  $("#content").delegate("div[type]", "mouseover", function () {
+    var offset = $(this).offset();
+    var top = offset.top + 10;
+    var left = offset.left + 810 - 40;
+    $(this)
+      .find(".close")
+      .css("top", top);
+    $(this)
+      .find(".close")
+      .css("left", left);
+
+    if (
+      $(this).attr("type") == "radio" ||
+      $(this).attr("type") == "checkbox"
+    ) {
+      $(this)
+        .find(".add")
+        .css("top", top + 30);
+      $(this)
+        .find(".add")
+        .css("left", left);
+      $(this)
+        .find(".add")
+        .css("display", "block");
+      $(this)
+        .find(".delete")
+        .css("top", top + 60);
+      $(this)
+        .find(".delete")
+        .css("left", left);
+      $(this)
+        .find(".delete")
+        .css("display", "block");
+    }
+    $(this)
+      .find(".close")
+      .css("display", "block");
+  });
+
+  $("#content").delegate("div[type]", "mouseout", function () {
+    $(this)
+      .find(".close")
+      .css("display", "none");
+    if ($(this).attr("type") == "radio") {
+      $(this)
+        .find(".add")
+        .css("display", "none");
+      $(this)
+        .find(".delete")
+        .css("display", "none");
+    }
+    if ($(this).attr("type") == "checkbox") {
+      $(this)
+        .find(".add")
+        .css("display", "none");
+      $(this)
+        .find(".delete")
+        .css("display", "none");
+    }
+  });
+
+  $(".main").delegate(".close", "click", function () {
+    var currentObj = $(this).closest("div[type]");
+
+    var type = currentObj.attr("type");
+    if (type == "label") {
+      currentObj.remove();
+    } else {
+      //带有Qn的div，需要更改div中n值，并且count--
+      var cur_number = currentObj.attr("number"); //当前number
+      currentObj.remove();
+      $("#content div[type!=label]").each(function () {
+        var number = $(this).attr("number");
+        if (number > cur_number) {
+          $(this).attr("number", number - 1);
+          var qn = "Q" + --number;
+          $(this).attr("id", qn);
+          $(this).attr("name", qn);
+          $(this)
+            .find("label")
+            .html(qn);
+        }
+      });
+      count--;
+    }
+  });
+  $(".main").delegate(".add", "click", function () {
+    var currentObj = $(this).closest("div[type]");
+
+    var type = currentObj.attr("type");
+    var length = $(this)
+      .closest("div[type]")
+      .find("ul li").length;
+    if (type == "radio") {
+      var content =
+        "<li><input type='radio'><input type='text' value='" +
+        (length + 1) +
+        "'></li>";
+    } else {
+      var content =
+        "<li><input type='checkbox'><input type='text' value='" +
+        (length + 1) +
+        "'></li>";
+    }
+    $(this)
+      .closest("div[type]")
+      .find("ul")
+      .append(content);
+  });
+  $(".main").delegate(".delete", "click", function () {
+    var length = $(this)
+      .closest("div[type]")
+      .find("ul li").length;
+    $(this)
+      .closest("div[type]")
+      .find("ul li:last")
+      .remove();
+  });
+
+  function showqrcode(str) {
+    var qrcode = document.createElement("div");
+    qrcode.setAttribute("id", "qrcode")
+    var qrcodeobj = new QRCode(qrcode, { width: 400, height: 400 })
+    qrcodeobj.makeCode(str)
+    document.getElementsByTagName("body")[0].appendChild(qrcode)
+    $('#cover').css('display', 'block'); //显示遮罩层  
+    $('#cover').css('height', '100%'); //显示遮罩层  
+
+  }
+  function removeqrcode() {
+
+  }
+</script>
+
+</html>
