@@ -1,4 +1,6 @@
-b2
+# readme for survey application
+
+## For lab2
 
 Android Survey core project for a primary design practice using Android Studio.
 
@@ -8,30 +10,33 @@ Android Survey core project for a primary design practice using Android Studio.
 郭俊帅 email_address:conquerfate9@gmail.com
 岑秋兰 email_address:1303214164@qq.com
 
-# For coding activity 8 and mini project
+## For coding activity 8 and mini
 
-Android API TODO: or above
+### Requirements/Platform
 
-## Requirements/Platform
+Android 10 or above
 
-## Installation
+### Installation
 
 intall android-client/build/survey.apk
 
-## Usage
+### Usage
 
-For survey creators:  
-For the surveyed:
+For survey creators:
 
-## How Does it work
+- from web: open deepworm.xyz:8000 in browser, create the survey, click the button and you will get a QR Code. Let your surveyed scan the QR Code with our android client.
+- from android: this should be updated later(TODO:)
+  For the surveyed:
 
-## API
+### How Does it work
 
-### deepworm.xyz:8000/getsurvey/<int:surveyid>
+### API
+
+#### deepworm.xyz:8000/getsurvey/<int:surveyid>
 
 Get this url, and the server will return the survey json string.
 
-### deepworm.xyz:8000/savesurvey
+#### deepworm.xyz:8000/savesurvey
 
 Post your survey json string to here. The json string should be in "content" field.  
 Then the server will return you a Integer which means the survey Id.
@@ -80,8 +85,7 @@ the survey json string:
 }
 ```
 
-### deepworm.xyz:8000/submitsurvey/<int:surveyid>
+#### deepworm.xyz:8000/submitsurvey/<int:surveyid>
 
 Post your survey result json string here.  
 The Sample result json string will be uploaded later.
-
