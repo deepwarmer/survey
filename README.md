@@ -22,11 +22,15 @@ intall android-client/build/survey.apk
 
 ### Usage
 
-For survey creators:
+#### For survey creators
 
 - from web: open deepworm.xyz:8000 in browser, create the survey, click the button and you will get a QR Code. Let your surveyed scan the QR Code with our android client.
 - from android: this should be updated later(TODO:)
   For the surveyed:
+
+#### For the surveyed
+
+You need to download and install android-clinet/survey.apk, scan the QR Code given and finish the survey
 
 ### How Does it work
 
