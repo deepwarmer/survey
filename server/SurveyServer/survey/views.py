@@ -44,10 +44,9 @@ def getSurveyResult(survey_id):
     objSinglesQuestions=clsSingleQuestion.objects.filter(survey=survey_id)
     objCheckboxQuestions=clsCheckboxQuestion.objects.filter(survey=survey_id)
     objTextQuestions=clsTextQuestion.objects.filter(survey=survey_id)
-    
 
     for question in objSinglesQuestions:
-        strQuestion={"type":"single","description":question.strDescription}
+        strQuestion={"type":"single","id":str(question.id),"description":question.strDescription}
         strQuestion["options"]=[]
         objOptions=clsSingleOption.objects.filter(question=question.id)
         for option in objOptions:
@@ -55,7 +54,7 @@ def getSurveyResult(survey_id):
         res["questions"].append(strQuestion)
     
     for question in objCheckboxQuestions:
-        strQuestion={"type":"checkbox","description":question.strDescription}
+        strQuestion={"type":"checkbox","id":str(question.id),"description":question.strDescription}
         strQuestion["options"]=[]
         objOptions=clsCheckboxOption.objects.filter(question=question.id)
         for option in objOptions:
@@ -63,14 +62,13 @@ def getSurveyResult(survey_id):
         res["questions"].append(strQuestion)
 
     for question in objTextQuestions:
-        strQuestion={"type":"text","description":question.strDescription}
+        strQuestion={"type":"text","id":str(question.id),"description":question.strDescription}
         strQuestion["answers"]=[]
         objAnswers=clsTextAnswer.objects.filter(question=question.id)
         for answer in objAnswers:
             strQuestion["answers"].append(answer.strAnswer)
         res["questions"].append(strQuestion)
-    
+    res["questions"]=sorted(res['questions'],key=id)
     return json.dumps(res)
 def showSurvey(request,survey_id):
-
     return HttpResponse(getSurveyResult(survey_id))
