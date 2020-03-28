@@ -71,4 +71,5 @@ def getSurveyResult(survey_id):
     res["questions"]=sorted(res['questions'],key=id)
     return json.dumps(res)
 def showSurvey(request,survey_id):
-    return HttpResponse(getSurveyResult(survey_id))
+    # return HttpResponse(getSurveyResult(survey_id))
+    return render(request,"survey/show.html",{"result":getSurveyResult(survey_id)})
