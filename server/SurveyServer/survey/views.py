@@ -27,18 +27,50 @@ def saveSurvey(request):
         objSurvey.save()
         
         return HttpResponse("http://deepworm.xyz:8000/survey/getsurvey/"+str(objSurvey.id))
-
-    # elif 'content' in request.GET and request.GET['content']:
-    #     message=request.content
-    #     objSurvey=clsSurvey()
-    #     objSurvey.jsonContent=message
-    #     objSurvey.save()
-    #     return HttpResponse(objSurvey.id)
     else:
         return HttpResponse("no survey content!")
 def getSurvey(request,survey_id):
-    # objSurvey=clsSurvey.objects()
+    # objSurvey=clsSurvey.objects
     objSurvey=get_object_or_404(clsSurvey,id=survey_id)
     #直接返回文本
     return HttpResponse(objSurvey.jsonContent)
+
+def submitSurvey(request,survey_id):
+    result=json.loads(request.POST['content'])
+    surveyid=1
+def getSurveyResult(survey_id):
+    res={"id":survey_id}
+    res['questions']=[]
+    objSinglesQuestions=clsSingleQuestion.objects.filter(survey=survey_id)
+    objCheckboxQuestions=clsCheckboxQuestion.objects.filter(survey=survey_id)
+    objTextQuestions=clsTextQuestion.objects.filter(survey=survey_id)
     
+
+    for question in objSinglesQuestions:
+        strQuestion={"type":"single","description":question.strDescription}
+        strQuestion["options"]=[]
+        objOptions=clsSingleOption.objects.filter(question=question.id)
+        for option in objOptions:
+            strQuestion["options"].append({"description":option.strDescription,"count":option.count})
+        res["questions"].append(strQuestion)
+    
+    for question in objCheckboxQuestions:
+        strQuestion={"type":"checkbox","description":question.strDescription}
+        strQuestion["options"]=[]
+        objOptions=clsCheckboxOption.objects.filter(question=question.id)
+        for option in objOptions:
+            strQuestion["options"].append({"description":option.strDescription,"count":option.count})
+        res["questions"].append(strQuestion)
+
+    for question in objTextQuestions:
+        strQuestion={"type":"text","description":question.strDescription}
+        strQuestion["answers"]=[]
+        objAnswers=clsTextAnswer.objects.filter(question=question.id)
+        for answer in objAnswers:
+            strQuestion["answers"].append(answer.strAnswer)
+        res["questions"].append(strQuestion)
+    
+    return json.dumps(res)
+def showSurvey(request,survey_id):
+
+    return HttpResponse(getSurveyResult(survey_id))
