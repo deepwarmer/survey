@@ -39,6 +39,8 @@ install android-client/build/survey.apk
 
 You need to download and install android-client/survey.apk, scan the QR Code given and finish the survey
 
+![img](survey.gif)
+
 ### How Does it work
 
 The survey creator should create a survey at [create page](deepworm.xyz:8000/survey/create) or at android client(same as the surveyed). And a QR Code will be given, which contains a url to get survey data. Then the surveyed should install [survey.apk](./android-client/survey.apk) and scan the QR Code. After finishing the survey, the surveyed should click the "Submit" button and the survey result will be uploaded.  
