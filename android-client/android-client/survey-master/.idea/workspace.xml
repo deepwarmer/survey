@@ -30,7 +30,7 @@
     </system>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="1ZOLMNZe4wAX7xkKFiXbKOwBBy2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,6 +38,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VBJDU19118007997" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-03-20T12:50:28.043Z" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
