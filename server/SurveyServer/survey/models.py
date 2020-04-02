@@ -20,11 +20,13 @@ class clsTextAnswer(models.Model):
     strAnswer=models.CharField(max_length=1000000000)
 class clsCheckboxOption(models.Model):
     question=models.ForeignKey(clsCheckboxQuestion,on_delete=models.CASCADE)
+    # count how many times it has been choose
     count=models.IntegerField(default=0)
     strDescription=models.CharField(max_length=1000000000)
     
 class clsSingleOption(models.Model):
     question=models.ForeignKey(clsSingleQuestion,on_delete=models.CASCADE)
+    # times it has been choose
     count=models.IntegerField(default=0)
     strDescription=models.CharField(max_length=1000000000)
 

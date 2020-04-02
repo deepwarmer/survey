@@ -7,6 +7,8 @@ import shutil
 import wordcloud
 import json
 # Create your views here.
+
+# the page where survey is created
 def create(request):
     return render(request,'survey/create.html')
 '''
@@ -39,12 +41,12 @@ def create(request):
 }
 }
 '''
+# post a json survey to here(in "content" field) and it will return an url where you can download the survey json
 def saveSurvey(request):
     request.encoding='utf-8'
     if request.method=="POST":
         message=request.POST['content']
-
-        # return HttpResponse(json.dumps(objJson))
+        # save the survey
         objSurvey=clsSurvey()
         
         objSurvey.jsonContent=message
@@ -56,6 +58,7 @@ def saveSurvey(request):
 
         objSurvey.jsonContent=message
         objSurvey.save()
+        #save the questions
         for question in objJson['survey']['questions']:
             if question['type']=="radio":
                 objQuestion=clsSingleQuestion(strDescription=question['question'],survey=objSurvey)
@@ -79,6 +82,8 @@ def saveSurvey(request):
         return HttpResponse("http://deepworm.xyz:8000/survey/getsurvey/"+str(objSurvey.id))
     else:
         return HttpResponse("no survey content!")
+
+# use survey id to get survey json string
 def getSurvey(request,survey_id):
     # objSurvey=clsSurvey.objects
     objSurvey=get_object_or_404(clsSurvey,id=survey_id)
@@ -108,7 +113,7 @@ submit_sample_json='''
   ]
 }
 '''
-
+# post survey result here(in 'content' field,json format,sample is above), database of the server will save it
 def submitSurvey(request):
     request.encoding='utf-8'
     # if True:
@@ -144,6 +149,7 @@ def submitSurvey(request):
         return HttpResponse("success")
     else:
         return HttpResponse("You should POST survey result in content")
+# a private function used to load survey result data(in json string) from database 
 def getSurveyResult(survey_id):
     res={"id":survey_id}
     res['questions']=[]
@@ -184,6 +190,8 @@ def getSurveyResult(survey_id):
 
     res["questions"]=sorted(res['questions'],key=id)
     return json.dumps(res)
+# you see your survey result here 
+# it calls getSurveyResult(survey_id) to get data
 def showSurvey(request,survey_id):
     # return HttpResponse(getSurveyResult(survey_id))
     return render(request,"survey/show.html",{"result":getSurveyResult(survey_id)})

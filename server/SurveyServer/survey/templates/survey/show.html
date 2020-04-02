@@ -12,7 +12,7 @@
     <div id="result"></div>
 </body>
 <script type="text/javascript">
-
+    // this is the survey json passed to html page
     var result = {{ result| safe}}
     for (i in result["questions"]) {
         var question = result["questions"][i]
