@@ -9,7 +9,36 @@ import json
 # Create your views here.
 def create(request):
     return render(request,'survey/create.html')
-
+'''
+{
+"survey": {
+  "id": "123555",
+  "len": "3",
+  "questions": [{
+    "type": "radio",
+    "question": "请输入单选描述",
+    "options": [{
+      "1": "选项1"
+    }, {
+      "2": "选项2"
+    }]
+  }, {
+    "type": "checkbox",
+    "question": "请输入多选描述",
+    "options": [{
+      "1": "选项1"
+    }, {
+      "2": "选项2"
+    }, {
+      "3": "选项3"
+    }]
+  }, {
+    "type": "text",
+    "question": "请输入文本框描述"
+  }]
+}
+}
+'''
 def saveSurvey(request):
     request.encoding='utf-8'
     if request.method=="POST":
@@ -27,6 +56,25 @@ def saveSurvey(request):
 
         objSurvey.jsonContent=message
         objSurvey.save()
+        for question in objJson['survey']['questions']:
+            if question['type']=="radio":
+                objQuestion=clsSingleQuestion(strDescription=question['question'],survey=objSurvey)
+                objQuestion.save()
+                for i in range(len(question['options'])):
+                    option=question['options'][i][str(i+1)]
+                    objOption=clsSingleOption(strDescription=option,question=objQuestion)
+                    objOption.save()
+            elif question['type']=='checkbox':
+                objQuestion=clsCheckboxQuestion(strDescription=question['question'],survey=objSurvey)
+                objQuestion.save()
+                for i in range(len(question['options'])):
+                    option=question['options'][i][str(i+1)]
+                    objOption=clsCheckboxOption(strDescription=option,question=objQuestion)
+                    objOption.save()
+
+            elif question['type']=='text':
+                objQuestion=clsTextQuestion(strDescription=question['question'],survey=objSurvey)
+                objQuestion.save()
         
         return HttpResponse("http://deepworm.xyz:8000/survey/getsurvey/"+str(objSurvey.id))
     else:
@@ -127,8 +175,8 @@ def getSurveyResult(survey_id):
             strQuestion["answers"].append(answer.strAnswer)
         res["questions"].append(strQuestion)
         
-        strTot=""
-        for s in strQuestion['answers']:strTot+=s+' '
+        strTot="none "
+        for s in strQuestion['answers']:strTot+=' '+s
         wdcld=wordcloud.WordCloud(background_color="white")
         wdcld.generate(strTot)
         wdcld.to_file("wdcld_qid_"+str(question.id)+".png")

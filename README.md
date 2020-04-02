@@ -14,14 +14,19 @@ Android Survey core project for a primary design practice using Android Studio.
 
 ### members
 
-| Name(En) |  CQU ID  |             rep             | job  |
-| :------: | :------: | :-------------------------: | :--: |
-|    DW    | 20171714 | https://deepworm.xyz/survey | TODO |
-|   Dean   | 20171744 |            TOTO             | TODO |
+| Name(En) |  CQU ID  |                 rep                 |                                        job                                        |
+| :------: | :------: | :---------------------------------: | :-------------------------------------------------------------------------------: |
+|    DW    | 20171714 | https://github.com/deepwormm/survey | database design, web services, showsurvey page,readme.md,http communication guide |
+|   Dean   | 20171744 | https://github.com/deepwormm/survey |                                  android client                                   |
 
 ### Requirements/Platform
 
-Android 10 or above
+- server
+  - wordcloud 1.6.0
+  - django 3.0.3
+  - python 3.6
+- android client
+  - Android 10 or above
 
 ### Installation
 
@@ -31,20 +36,19 @@ install android-client/build/survey.apk
 
 #### For survey creators
 
-- from web: open deepworm.xyz:8000 in browser, create the survey, click the button and you will get a QR Code. Let your surveyed scan the QR Code with our android client.
-- from android: this should be updated later(TODO:)
-  For the surveyed:
+- from web: open deepworm.xyz:8000/survey/create in browser, create the survey, click the button and you will get a QR Code. Let your surveyed scan the QR Code with our android client. A url will be given below the QR Code. Remember to save that url so you can see your statistical survey result whenever you want.
+  ![img](server/create_see_survey.gif)
+- from android: For the surveyed: download and install android-client/survey.apk. Click ![img](android-client/icon_create.png) to ]]create a new survey.
 
 #### For the surveyed
 
 You need to download and install android-client/survey.apk, scan the QR Code given and finish the survey
 
-![img](survey.gif)
+![img](android-client/fill_in_survey.gif)
 
 ### How Does it work
 
-The survey creator should create a survey at [create page](deepworm.xyz:8000/survey/create) or at android client(same as the surveyed). And a QR Code will be given, which contains a url to get survey data. Then the surveyed should install [survey.apk](./android-client/survey.apk) and scan the QR Code. After finishing the survey, the surveyed should click the "Submit" button and the survey result will be uploaded.  
-If the survey was created at android client, the creator will be given a url with the QR Code. The url is important because you will need it to see the statistical result. You can see your survey result at any time by visit that url in your browser.
+The survey creator should create a survey at [create page](deepworm.xyz:8000/survey/create) or at android client(same as the surveyed). And a QR Code will be given, which contains a url to get survey data. Then the surveyed should install [survey.apk](./android-client/survey.apk) and scan the QR Code. After finishing the survey, the surveyed should click the "Submit" button and the survey result will be uploaded.
 
 ### Completed functions
 
@@ -62,15 +66,14 @@ The surveyed can scan a QR Code to load any survey.
 
 ### Uncompleted functions
 
-#### Create survey at android Client
-
-You can create your survey at the android client, too.
-
-#### View your survey result in web page
-
-We automatically statistics and display visualized results at a webpage. So you can see your survey result after delivering your survey.
+Android client can't submit survey result now.   
+Android apk is not packed yet.
 
 ### API
+
+#### deepworm.xyz:8000/survey/create
+
+It returns a webpage where you can create your survey.
 
 #### deepworm.xyz:8000/getsurvey/<int:surveyid>
 
@@ -127,5 +130,47 @@ the survey json string:
 
 #### deepworm.xyz:8000/submitsurvey/<int:surveyid>
 
-Post your survey result json string here.  
-The Sample result json string will be uploaded later.
+Post your survey result json string here.
+
+sample survey result string:
+
+```json
+{
+  "surveyId": 19,
+  "length": 3,
+  "data": [
+    {
+      "type": "radio",
+      "question": "What's your gender?",
+      "option": {"1": "male"}
+    },
+    {
+      "type": "checkbox",
+      "question": "What smartphone brands do you like?",
+      "option": {"1": "Huawei", "2": "Xiao Mi"}
+    },
+    {
+      "type": "text",
+      "question": "What do you care aboud most when buying a smartphone?",
+      "option": {"1": "appearance"}
+    }
+  ]
+}
+```
+
+#### deepworm.xyz:8000/showsurvey/<int:surveyid>
+
+The survey result is shown here.
+
+- bar charts for single questions.
+- fan charts for checkbox questions.
+- word cloud maps for text questions.
+
+### Contact us
+
+you can contact us by deepworm@qq.com or wang904183923@163.com
+
+### FAQ
+
+Q: Why I can't visit the website?  
+A: Please contact my(deepworm@qq.com)

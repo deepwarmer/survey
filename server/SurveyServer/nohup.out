@@ -1,0 +1,34 @@
+Watching for file changes with StatReloader
+[02/Apr/2020 13:12:09] "GET /survey/create HTTP/1.1" 200 14091
+[02/Apr/2020 13:12:09] "GET /static/survey/jquery-1.11.3.js HTTP/1.1" 304 0
+[02/Apr/2020 13:12:09] "GET /static/survey/KeeeX_qrcode.js HTTP/1.1" 304 0
+Not Found: /favicon.ico
+[02/Apr/2020 13:12:10] "GET /favicon.ico HTTP/1.1" 404 2080
+[02/Apr/2020 13:14:00] "POST /survey/savesurvey HTTP/1.1" 200 44
+Internal Server Error: /survey/showsurvey/20
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/django/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ubuntu/miniconda3/envs/django/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/miniconda3/envs/django/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/workspace/IDE/AndroidStudio/survey/server/SurveyServer/survey/views.py", line 187, in showSurvey
+    return render(request,"survey/show.html",{"result":getSurveyResult(survey_id)})
+  File "/home/ubuntu/workspace/IDE/AndroidStudio/survey/server/SurveyServer/survey/views.py", line 179, in getSurveyResult
+    wdcld.generate(strTot)
+  File "/home/ubuntu/miniconda3/envs/django/lib/python3.6/site-packages/wordcloud/wordcloud.py", line 619, in generate
+    return self.generate_from_text(text)
+  File "/home/ubuntu/miniconda3/envs/django/lib/python3.6/site-packages/wordcloud/wordcloud.py", line 601, in generate_from_text
+    self.generate_from_frequencies(words)
+  File "/home/ubuntu/miniconda3/envs/django/lib/python3.6/site-packages/wordcloud/wordcloud.py", line 391, in generate_from_frequencies
+    "got %d." % len(frequencies))
+ValueError: We need at least 1 word to plot a word cloud, got 0.
+[02/Apr/2020 13:14:04] "GET /survey/showsurvey/20 HTTP/1.1" 500 86217
+[02/Apr/2020 13:16:49] "GET /admin/ HTTP/1.1" 200 9884
+[02/Apr/2020 13:16:53] "GET /admin/survey/clssurvey/ HTTP/1.1" 200 4624
+[02/Apr/2020 13:16:53] "GET /admin/jsi18n/ HTTP/1.1" 200 3223
+[02/Apr/2020 13:16:55] "GET /admin/survey/clssurvey/20/change/ HTTP/1.1" 200 5416
+[02/Apr/2020 13:16:55] "GET /admin/jsi18n/ HTTP/1.1" 200 3223
+[02/Apr/2020 13:17:01] "GET /admin/survey/clssurvey/ HTTP/1.1" 200 4624
+[02/Apr/2020 13:17:03] "GET /admin/ HTTP/1.1" 200 9884
