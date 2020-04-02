@@ -16,7 +16,7 @@ Android Survey core project for a primary design practice using Android Studio.
 
 | Name(En) |  CQU ID  |                 rep                 |                                        job                                        |
 | :------: | :------: | :---------------------------------: | :-------------------------------------------------------------------------------: |
-|    DW    | 20171714 | https://github.com/deepwormm/survey | database design, web services, showsurvey page,readme.md,http communication guide |
+|    DW    | 20171714 | https://github.com/deepwormm/survey | database design, web services, showsurvey page,readme.md,http communication guide,make gif and video |
 |   Dean   | 20171744 | https://github.com/Dean0110/survey |                                  android client                                   |
 
 ### Requirements/Platform
