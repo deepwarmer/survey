@@ -14,10 +14,10 @@ Android Survey core project for a primary design practice using Android Studio.
 
 ### members
 
-| Name(En) |  CQU ID  |                 rep                 |                                        job                                        |
-| :------: | :------: | :---------------------------------: | :-------------------------------------------------------------------------------: |
+| Name(En) |  CQU ID  |                 rep                 |                                                 job                                                  |
+| :------: | :------: | :---------------------------------: | :--------------------------------------------------------------------------------------------------: |
 |    DW    | 20171714 | https://github.com/deepwormm/survey | database design, web services, showsurvey page,readme.md,http communication guide,make gif and video |
-|   Dean   | 20171744 | https://github.com/Dean0110/survey |                                  android client                                   |
+|   Dean   | 20171744 | https://github.com/Dean0110/survey  |                                            android client                                            |
 
 ### Requirements/Platform
 
@@ -44,7 +44,13 @@ install android-client/build/survey.apk
 
 You need to download and install android-client/survey.apk, scan the QR Code given and finish the survey
 
-![img](android-client/fill_in_survey.gif)
+#### For server administrator
+Build a python environment including above packages.  
+Then run:
+```bash
+cd ./server/SurveyServer
+python manage.py runserver 0.0.0.0:8000
+```
 
 ### How Does it work
 
@@ -66,7 +72,7 @@ The surveyed can scan a QR Code to load any survey.
 
 ### Uncompleted functions
 
-Android client can't submit survey result now.   
+Android client can't submit survey result now.  
 Android apk is not packed yet.
 
 ### API
