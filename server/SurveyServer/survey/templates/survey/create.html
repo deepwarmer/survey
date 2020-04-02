@@ -8,6 +8,9 @@
   <script src="{% static 'survey/jquery-1.11.3.js' %}"></script>
   <script src="{% static 'survey/KeeeX_qrcode.js' %}"></script>
   <style type="text/css">
+    #qrcode a{
+      font-size: large;
+    }
     .menu {
       float: left;
       width: 100px;
@@ -183,13 +186,13 @@
       <div>
         <table>
           <tr>
-            <td><a href="javascript:;" id="radio2">Radio   </a></td>
+            <td><a href="javascript:;" id="radio2">Radio </a></td>
           </tr>
           <tr>
             <td><a href="javascript:;" id="radio3">Checkbox</a></td>
           </tr>
           <tr>
-            <td><a href="javascript:;" id="text">Text    </a></td>
+            <td><a href="javascript:;" id="text">Text </a></td>
           </tr>
         </table>
       </div>
@@ -197,12 +200,12 @@
     <div class="container">
       <div class="head">
         <ul>
-         
+
           <li>
             <button id="btnSubmit">submit</button>
           </li>
         </ul>
-        
+
       </div>
       <div id="content"></div>
     </div>
@@ -363,11 +366,11 @@
         }
       });
     var name = $("#questionnaireName").val();
-if(count==0){
-window.alert("Please input the question!");
+    if (count == 0) {
+      window.alert("Please input the question!");
 
-return;
-}
+      return;
+    }
 
     var tempdata = {};
     tempdata["id"] = "" + "" + "";
@@ -384,38 +387,38 @@ return;
     ////////////////////////////////这里打印了JSON字符串///////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-   //console.log(template);
-var formdata=new FormData();
-//可以通过append()方法来追加数据
-formdata.append("content",template);
-//通过get方法对值进行读取
+    //console.log(template);
+    var formdata = new FormData();
+    //可以通过append()方法来追加数据
+    formdata.append("content", template);
+    //通过get方法对值进行读取
 
-var data11={
+    var data11 = {
 
-		'content':template
-	}
-console.log(data11);
+      'content': template
+    }
+    console.log(data11);
 
 
-console.log(formdata);
+    console.log(formdata);
 
-console.log(formdata.getAll("content"));
-//////////////////////////////////////////////提交
+    console.log(formdata.getAll("content"));
+    //////////////////////////////////////////////提交
 
- //console.info(a); 
- $.ajax({             
-   url : "http://deepworm.xyz:8000/survey/savesurvey",        
-        type : "POST",             
-data:data11,          
-    success : function(data) {                   
- console.info("succes"+data);      
-showqrcode(data)     ;  
-   },             
-   error : function(data) {               
- console.warn("warn"+data);          
-      }         
-   });         
-  // return false;
+    //console.info(a); 
+    $.ajax({
+      url: "http://deepworm.xyz:8000/survey/savesurvey",
+      type: "POST",
+      data: data11,
+      success: function (data) {
+        console.info("succes" + data);
+        showqrcode(data);
+      },
+      error: function (data) {
+        console.warn("warn" + data);
+      }
+    });
+    // return false;
 
 
     //showqrcode(template)
@@ -578,6 +581,14 @@ showqrcode(data)     ;
     var qrcodeobj = new QRCode(qrcode, { width: 400, height: 400 })
     qrcodeobj.makeCode(str)
     document.getElementsByTagName("body")[0].appendChild(qrcode)
+
+    var url = document.createElement("a")
+    var download_url_seperated=str.split('/')
+    url.setAttribute("href","http://deepworm.xyz:8000/survey/showsurvey/"+download_url_seperated[download_url_seperated.length-1])
+    url.innerHTML = "See survey result here." 
+    document.getElementById("qrcode").appendChild(url)
+
+
     $('#cover').css('display', 'block'); //显示遮罩层  
     $('#cover').css('height', '100%'); //显示遮罩层  
 
