@@ -70,6 +70,10 @@ You don't need to be a profession to create a survey -- everyone can. You only n
 
 The surveyed can scan a QR Code to load any survey.
 
+#### see statistical result of your survey
+
+After you create the survey, the web page will give you a link to see your survey result. You can visit the link to see the result whenever you want.
+
 ### Uncompleted functions
 
 Android client can't submit survey result now.  
