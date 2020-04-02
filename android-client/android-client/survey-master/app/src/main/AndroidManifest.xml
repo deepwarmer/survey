@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="mg.studio.android.survey">
 
+    <supports-screens android:anyDensity="true"/>
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -37,7 +39,8 @@
         <activity
             android:name=".ReportActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:gravity="center_horizontal"
+        android:text="@string/input_paswd"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_large" />
+
+    <EditText
+        android:id="@+id/unlock_pswd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_zero"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:autofillHints="@string/pswd"
+        android:gravity="center_horizontal"
+        android:hint="@string/pswd"
+        android:inputType="numberPassword"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_large"
+        android:maxLength="4"
+        android:backgroundTint="@color/colorPrimary"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/unlock_okay"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_60dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginEnd="@dimen/margin_60dp"
+        android:layout_marginBottom="@dimen/margin_60dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/okay"
+        android:textSize="@dimen/font_size_middle" />
+</LinearLayout>

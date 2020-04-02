@@ -17,7 +17,7 @@ Android Survey core project for a primary design practice using Android Studio.
 | Name(En) |  CQU ID  |                 rep                 |                                        job                                        |
 | :------: | :------: | :---------------------------------: | :-------------------------------------------------------------------------------: |
 |    DW    | 20171714 | https://github.com/deepwormm/survey | database design, web services, showsurvey page,readme.md,http communication guide |
-|   Dean   | 20171744 | https://github.com/deepwormm/survey |                                  android client                                   |
+|   Dean   | 20171744 | https://github.com/Dean0110/survey |                                  android client                                   |
 
 ### Requirements/Platform
 
@@ -173,4 +173,4 @@ you can contact us by deepworm@qq.com or wang904183923@163.com
 ### FAQ
 
 Q: Why I can't visit the website?  
-A: Please contact my(deepworm@qq.com)
+A: Please contact me(deepworm@qq.com)

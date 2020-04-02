@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ReportActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_40dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_20dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/report_title"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_size_large" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:id="@+id/show_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_5dp"
+        android:background="@drawable/btn_save"
+        android:onClick="onClickSave"
+        android:text="@string/btn_save"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_size_middle" />
+
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_5dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:background="@color/colorPrimary"
+        android:onClick="onClickExit"
+        android:text="@string/btn_exit"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_size_middle" />
+
+
+</LinearLayout>

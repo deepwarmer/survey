@@ -6,23 +6,36 @@
     android:orientation="vertical">
     <!--  Start : Your code should be within this block -->
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="120dp">-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
 
-<!--        <Button-->
-<!--            android:id="@+id/btn_create_ques"-->
-<!--            android:layout_width="@dimen/margin_50dp"-->
-<!--            android:layout_height="@dimen/margin_50dp"-->
-<!--            android:layout_marginTop="@dimen/margin_20dp"-->
-<!--            android:layout_marginLeft="340dp"-->
-<!--            android:background="@drawable/make_ques"/>-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginTop="65dp"-->
-<!--            android:layout_marginLeft="349dp"-->
-<!--            android:text="NEW"/>-->
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:text="@string/lang_config_text"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="#FFFFFF"
+            android:onClick="onClickLangChange"/>
+
+
+
+        <Button
+            android:id="@+id/btn_create_ques"
+            android:layout_width="@dimen/margin_50dp"
+            android:layout_height="@dimen/margin_50dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:layout_marginLeft="340dp"
+            android:onClick="enterCreatePage"
+            android:background="@drawable/make_ques"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="349dp"
+            android:text="@string/new_ques_hint"/>
 
         <TextView
             android:id="@+id/txt_welcome"
@@ -49,7 +62,7 @@
             android:text="@string/str_attend"
             android:textColor="@android:color/black"
             android:textSize="@dimen/font_size_middle" />
-<!--    </RelativeLayout>-->
+    </RelativeLayout>
 
 
     <ScrollView
@@ -116,7 +129,10 @@
         </LinearLayout>
     </ScrollView>
 
-
+<!--    <Button-->
+<!--        android:layout_width="@dimen/margin_50dp"-->
+<!--        android:layout_height="@dimen/margin_50dp"-->
+<!--        android:onClick="trry"/>-->
 
     <ImageView
         android:id="@+id/img_scan"
@@ -134,7 +150,7 @@
         android:layout_marginBottom="@dimen/margin_20dp"
         android:gravity="center"
         android:textColor="@color/colorMiniHint"
-        android:text="Scan to \nGet questionnaire" />
+        android:text="@string/scan_QR_hint" />
     <CheckBox
         android:id="@+id/cb_accept"
         android:layout_width="wrap_content"

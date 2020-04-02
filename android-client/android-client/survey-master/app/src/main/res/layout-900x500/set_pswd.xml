@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <TextView
+        android:id="@+id/set_pswd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:gravity="center_horizontal"
+        android:text="@string/set_pswd"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_middle" />
+
+    <EditText
+        android:id="@+id/fill_pswd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_zero"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:autofillHints="@string/pswd"
+        android:gravity="center_horizontal"
+        android:hint="@string/pswd"
+        android:inputType="numberPassword"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_middle"
+        android:maxLength="4"
+        android:backgroundTint="@color/colorPrimary"/>
+
+    <EditText
+        android:id="@+id/cf_pswd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_zero"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:layout_marginBottom="@dimen/margin_30dp"
+        android:autofillHints="@string/pswd"
+        android:gravity="center_horizontal"
+        android:hint="@string/cpswd"
+        android:inputType="numberPassword"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/font_size_middle"
+        android:maxLength="4"
+        android:backgroundTint="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="4 digits at most"
+        android:textSize="@dimen/font_size_average"/>
+
+    <TextView
+        android:id="@+id/pswd_worn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="@color/colorMiniHint"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/set_unlock_pswd"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="@dimen/margin_60dp"
+        android:layout_marginTop="@dimen/margin_60dp"
+        android:layout_marginRight="@dimen/margin_60dp"
+        android:layout_marginBottom="@dimen/margin_60dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/okay"
+        android:textSize="@dimen/font_size_middle" />
+</LinearLayout>

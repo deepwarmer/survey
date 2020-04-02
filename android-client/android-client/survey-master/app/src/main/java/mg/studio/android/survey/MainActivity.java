@@ -5,12 +5,17 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.Window;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,11 +36,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Locale;
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private int qNum = 0; // number of questions
     private int qSeq = 0; // sequence
     private String surveyId;
+    private String createURL = "http://deepworm.xyz:8000/survey/create";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                         builder.append(line);
                     }
                     text = builder.toString();
-                    System.out.println("我的数据：" + text);
+                    //System.out.println("我的数据：" + text);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -416,6 +426,108 @@ public class MainActivity extends AppCompatActivity {
             je.printStackTrace();
         }
     }
+	
+	//Upload data
+	public static void submitSurvey(String json){
+        try {
+
+            String path = "http://deepworm.xyz:8000/survey/submitsurvey";
+            URL url = new URL(path);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.connect();
+            conn.setRequestMethod("POST");
+
+            conn.setConnectTimeout(5000);
+
+            String data = "content=" + URLEncoder.encode(json, "utf-8");
+            conn.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            conn.setRequestProperty("Content-Length", data.length()+"");
+
+            //Toast.makeText(mainActivity,data,Toast.LENGTH_LONG).show();
+            conn.setDoOutput(true);
+            conn.getOutputStream().write(data.getBytes());
+ 
+            int code = conn.getResponseCode();
+            Log.i("code",""+code);
+            // System.out.println(code);
+            if (code==200) {
+
+                InputStream is = conn.getInputStream();
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                int len = -1;
+                byte[] buffer = new byte[1024];
+                while ((len = is.read(buffer)) != -1) {
+                    baos.write(buffer, 0, len);
+                }
+                is.close();
+
+                String result = baos.toString();
+                // System.out.println(result);
+                assert(result=="success");
+            }
+        } catch (Exception exc) {
+            // TODO: handle exception
+            Toast.makeText(mainActivity,R.string.upload_fail,Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //  To upload data to server
+    private void uploadAnswerToServer(){
+        JSONArray dataArray = new JSONArray();
+        final JSONObject uploadJSON = new JSONObject();
+        try{
+            uploadJSON.put("surveyId", surveyId);
+            uploadJSON.put("length", qNum);
+
+            for (int i = 0; i < qNum; i++)
+                dataArray.put(answers[i]);
+
+            uploadJSON.put("data", dataArray);
+
+        }catch (JSONException je){
+            Toast.makeText(getApplicationContext(),R.string.gather_data_fail,Toast.LENGTH_SHORT).show();
+            return;
+        }
+		
+		submitSurvey(uploadJSON.toString());
+
+/*         Vector<Thread> threadVector = new Vector<Thread>();
+        Thread childThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpURLConnection conn = null;
+                try {
+                    URL url = new URL(surveyURL);
+                    conn = (HttpURLConnection) url.openConnection();
+                    conn.setDoOutput(true);
+                    conn.setRequestMethod("POST");
+                    conn.setConnectTimeout(4000);
+                    OutputStream out = conn.getOutputStream();
+
+                    out.write(uploadJSON.toString().getBytes());
+
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),R.string.upload_fail,Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+                if (conn != null) {
+                    conn.disconnect();
+                }
+            }
+        });
+
+        threadVector.add(childThread);
+        childThread.start();
+        for (Thread thread : threadVector) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } */
+
+    }
 
     // start report activity
     public void onClickReport(View view) {
@@ -426,6 +538,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("data", jsonArray.toString());
         intent.putExtra("length", qNum);
         intent.putExtra("surveyId", surveyId);
+
+        uploadAnswerToServer();
+
         startActivity(intent);
     }
 
@@ -449,4 +564,46 @@ public class MainActivity extends AppCompatActivity {
             startService(new Intent(this, PswdService.class));
         }
     }
+
+    //  change all activities' language
+    public void onClickLangChange(View view){
+        String lang=getResources().getConfiguration().locale.getLanguage();
+        if(lang.equals("zh")){
+            Locale.setDefault(Locale.ENGLISH);
+            Configuration config = getBaseContext().getResources().getConfiguration();
+            config.locale = Locale.ENGLISH;
+            getBaseContext().getResources().updateConfiguration(config
+                    , getBaseContext().getResources().getDisplayMetrics());
+            recreate();
+        }
+        else {
+            Locale.setDefault(Locale.CHINESE);
+            Configuration config = getBaseContext().getResources().getConfiguration();
+            config.locale = Locale.CHINESE;
+            getBaseContext().getResources().updateConfiguration(config
+                    , getBaseContext().getResources().getDisplayMetrics());
+            recreate();
+        }
+    }
+
+    public void enterCreatePage(View v){
+        setContentView(R.layout.activity_create);
+        WebView webv = (WebView)findViewById(R.id.web_create);
+        webv.setWebViewClient(new WebViewClient());
+        webv.getSettings().setJavaScriptEnabled(true);
+        webv.loadUrl(createURL);
+    }
+
+    public void backFromCreate(View v){
+        setContentView(R.layout.welcome);
+    }
+
+//	public void trry(View v){
+//        String json = "{\"surveyId\":19,\"length\":3,\"data\":[{\"type\":\"radio\",\"question\":\"What's your gender?\",\"option\":{\"1\":\"male\"}},{\"type\":\"checkbox\",\"question\":\"What smartphone brands do you like?\",\"option\":{\"1\":\"Huawei\",\"2\":\"Xiao Mi\"}},{\"type\":\"text\",\"question\":\"What do you care about most when buying a smartphone?\",\"option\":{\"1\":\"appearance\"}}]}";
+//		submitSurvey(json);
+//	}
+
+
 }
+
+
